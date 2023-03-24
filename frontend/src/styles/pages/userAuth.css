@@ -52,3 +52,9 @@
   border-top-right-radius: 0.35rem;
   border-bottom-right-radius: 0.35rem;
 }
+
+@media (min-width: 0px) and (max-width: 500px) {
+  .formSwitcher {
+    width: 18rem;
+  }
+}
