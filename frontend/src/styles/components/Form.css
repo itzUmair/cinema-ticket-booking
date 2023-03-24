@@ -1,0 +1,87 @@
+.loginForm,
+.signupForm {
+  display: flex;
+  flex-direction: column;
+  padding-block: 1.5rem;
+  gap: 1.25rem;
+  width: 25rem;
+}
+
+.formGroup {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.formGroup > input {
+  background-color: rgb(15, 16, 46);
+  border: none;
+  padding: 0.5rem;
+  width: 100%;
+  color: var(--primary-txt-clr);
+  font-size: 0.9rem;
+  border-radius: 0.25rem;
+}
+
+.formGroup.password {
+  position: relative;
+}
+
+.formGroup > .showPassword {
+  position: absolute;
+  bottom: 0.15rem;
+  right: 0.3rem;
+  cursor: pointer;
+}
+
+.formGroup > .showPassword > img {
+  width: 1.25rem;
+  user-select: none;
+}
+
+.formGroup > input:focus {
+  outline: 0.1rem solid var(--primary-accent-clr);
+}
+
+.formGroup > label {
+  font-size: 1rem;
+}
+
+.formGroup > input::placeholder {
+  font-size: 0.8rem;
+  color: var(--placeholder-clr);
+}
+
+.formGroup > label {
+  user-select: none;
+}
+
+.submitBtn {
+  background-color: var(--primary-accent-clr);
+  color: var(--primary-txt-clr);
+
+  padding-block: 0.5rem;
+  border: none;
+  width: 100%;
+
+  border-radius: 0.35rem;
+  cursor: pointer;
+}
+
+.submitBtn:hover,
+.submitBtn:focus {
+  outline: none;
+  background-color: var(--primary-accent-hover-clr);
+}
+
+.errorContainer {
+  text-align: center;
+  background-color: var(--error-clr);
+  padding-block: 0.25rem;
+}
+
+.errorContainer > p {
+  color: var(--primary-txt-clr);
+  font-size: 0.9rem;
+}

@@ -1,17 +1,46 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import "../styles/components/Login.css";
+// Eye and Hidden icon taken from flaticon
+import Eye from "../assets/eye.png";
+import Hidden from "../assets/hidden.png";
+import "../styles/components/Form.css";
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!email.length) {
+      setError("Email cannot be empty");
+    }
+    if (!password.length) {
+      setError("Password cannot be empty");
+    }
+
+    if (password.length < 8) {
+      setError("Password must atleast be 8 character long");
+    }
+    if (
+      password.length >= 8 &&
+      !/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(
+        password
+      )
+    ) {
+      setError("Invalid password");
+    }
+    if (
+      email.length &&
+      !/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)
+    ) {
+      setError("Invalid Email Address");
+    }
   };
 
   const handleChange = (e) => {
+    setError("");
     if (e.target.id === "email") {
       setEmail(e.target.value);
     }
@@ -28,7 +57,7 @@ function Login() {
   };
 
   return (
-    <form className="loginForm">
+    <form className="loginForm" noValidate={true}>
       <span className="formGroup">
         <label htmlFor="email">Email: </label>
         <input
@@ -41,10 +70,10 @@ function Login() {
           required
         />
       </span>
-      <span className="formGroup">
+      <span className="formGroup password">
         <label htmlFor="password">Password: </label>
         <input
-          type="password"
+          type={showPassword ? "text" : "password"}
           id="password"
           value={password}
           onChange={handleChange}
@@ -52,6 +81,13 @@ function Login() {
           placeholder="Enter Your Password"
           required
         />
+        <span
+          role="button"
+          className="showPassword"
+          onClick={() => setShowPassword(!showPassword)}
+        >
+          <img src={showPassword ? Hidden : Eye} alt="show password" />
+        </span>
       </span>
 
       {error && (

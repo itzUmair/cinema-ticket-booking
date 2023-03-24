@@ -4,25 +4,25 @@
   flex-direction: column;
   min-height: 100vh;
 
-  background-color: #14163e;
-  color: #fafafb;
+  background-color: #13153b;
+  color: var(--primary-txt-clr);
 }
 
 .logo {
-  width: 15rem;
+  width: 10rem;
   margin-block: 2rem;
   user-select: none;
 }
 
 .formSwitcher {
   display: flex;
-  width: 20rem;
+  width: 25rem;
   gap: 0.15rem;
 }
 
 .formSwitcher > button {
-  color: #fafafb;
-  background-color: #363c5d;
+  color: var(--primary-txt-clr);
+  background-color: var(--button-bg-clr);
 
   padding-block: 0.5rem;
   border: none;
@@ -31,16 +31,16 @@
 }
 
 .formSwitcher > button:hover {
-  background-color: #2e334f;
+  background-color: var(--button-hover-clr);
 }
 
 .formSwitcher > button:focus {
-  outline: 0.1rem solid #f03b7a;
-  background-color: #2e334f;
+  outline: 0.1rem solid var(--primary-accent-clr);
+  background-color: var(--button-hover-clr);
 }
 
 .formSwitcher > button.active {
-  color: #f03b7a;
+  color: var(--primary-accent-clr);
 }
 
 .formSwitcher .login {
