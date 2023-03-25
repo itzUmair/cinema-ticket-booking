@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "../api/axios";
+import { useNavigate } from "react-router-dom";
+import { useCookies } from "react-cookie";
+
 // Eye and Hidden icon taken from flaticon
 import Eye from "../assets/eye.png";
 import Hidden from "../assets/hidden.png";
@@ -10,6 +13,8 @@ function Login() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const [cookies, setCookies, removeCookies] = useCookies();
+  const navigate = useNavigate();
 
   const validateForm = () => {
     if (!email.length) {
@@ -71,7 +76,9 @@ function Login() {
       }
     }
     if (response.status === 200) {
-      console.log("logged in");
+      setCookies("accessToken", response.data.token);
+      console.log(response.data.token);
+      navigate("/user/dashboard");
     }
   };
 

@@ -57,7 +57,9 @@ const adminLogin = async (req, res) => {
   }
   const admin_id = result[0].admin_id;
 
-  const accessToken = jwt.sign({ admin_id }, process.env.JWT_SECRET);
+  const accessToken = jwt.sign({ admin_id }, process.env.JWT_SECRET, {
+    expiresIn: "1m",
+  });
 
   // sending the access token
   res
@@ -114,7 +116,9 @@ const userLogin = async (req, res) => {
   }
   const customer_id = result[0].customer_id;
 
-  const accessToken = jwt.sign({ customer_id }, process.env.JWT_SECRET);
+  const accessToken = jwt.sign({ customer_id }, process.env.JWT_SECRET, {
+    expiresIn: "5s",
+  });
 
   // sending the access token
   res
@@ -163,4 +167,16 @@ const userSignup = async (req, res) => {
   res.status(201).json({ message: "Account created successfully!" });
 };
 
-module.exports = { home, adminLogin, userLogin, userSignup };
+const verifyToken = async (req, res) => {
+  const { token } = req.body;
+  try {
+    const valid = jwt.verify(token, process.env.JWT_SECRET);
+    res.status(200).json({ accessToken: token });
+    return;
+  } catch (err) {
+    res.status(401).json({ message: err.name });
+    return;
+  }
+};
+
+module.exports = { home, adminLogin, userLogin, userSignup, verifyToken };
