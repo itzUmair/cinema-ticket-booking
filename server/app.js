@@ -12,7 +12,7 @@ app.use(
   })
 );
 app.use(express.json());
-app.use(routes);
+app.use("/api/v1", routes);
 
 const port = process.env.PORT;
 app.listen(port, () => console.log(`Server listening to port: ${port}...`));

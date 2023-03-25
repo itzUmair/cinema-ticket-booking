@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import axios from "../api/axios";
+
 // Eye and Hidden icon taken from flaticon
 import Eye from "../assets/eye.png";
 import Hidden from "../assets/hidden.png";
@@ -9,19 +11,23 @@ function Signup() {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
-  const validateForm = () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     if (
       !/^(?=[a-zA-Z ]{3,20}$)(?!.*[_.]{2})[^_.].*[^_.]$/.test(name) ||
       name.endsWith(" ") ||
       name.startsWith(" ")
     ) {
       setError("Invalid characters in name");
+      return;
     }
     if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
       setError("Invalid email address");
+      return;
     }
     if (
       !/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(
@@ -31,22 +37,38 @@ function Signup() {
       setError(
         "Password must contain at least one uppercase letter, one lowercase letter, one number and one special character"
       );
+      return;
     }
-    if (confirmPassword.length && password !== confirmPassword) {
+    if (confirmPassword.length > 0 && password !== confirmPassword) {
       setError("Passwords do not match");
+      return;
     }
     if (password.length && !confirmPassword.length) {
       setError("Confirm your password");
+      return;
     }
-  };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    validateForm();
+    let response;
+    try {
+      response = await axios.post("user/auth/signup", {
+        name,
+        email,
+        password,
+      });
+    } catch (err) {
+      if (err.response.status === 400) {
+        setError(err.response.data.message);
+        return;
+      }
+    }
+    if (response.status === 201) {
+      setSuccess("Account created successfully! You can log in now...");
+    }
   };
 
   const handleChange = (e) => {
     setError("");
+    setSuccess("");
     if (e.target.id === "name") {
       setName(e.target.value);
     }
@@ -134,6 +156,11 @@ function Signup() {
       {error && (
         <span className="errorContainer">
           <p>{error}</p>
+        </span>
+      )}
+      {!error && success && (
+        <span className="successContainer">
+          <p>{success}</p>
         </span>
       )}
 

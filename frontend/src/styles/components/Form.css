@@ -86,6 +86,17 @@
   font-size: 0.9rem;
 }
 
+.successContainer {
+  text-align: center;
+  background-color: var(--success-clr);
+  padding-block: 0.25rem;
+}
+
+.successContainer > p {
+  color: var(--primary-txt-clr);
+  font-size: 0.9rem;
+}
+
 @media (min-width: 0px) and (max-width: 500px) {
   .loginForm,
   .signupForm {

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import axios from "../api/axios";
 // Eye and Hidden icon taken from flaticon
 import Eye from "../assets/eye.png";
 import Hidden from "../assets/hidden.png";
@@ -11,17 +11,19 @@ function Login() {
   const [error, setError] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const validateForm = () => {
     if (!email.length) {
       setError("Email cannot be empty");
+      return;
     }
     if (!password.length) {
       setError("Password cannot be empty");
+      return;
     }
 
     if (password.length < 8) {
       setError("Password must atleast be 8 character long");
+      return;
     }
     if (
       password.length >= 8 &&
@@ -30,12 +32,46 @@ function Login() {
       )
     ) {
       setError("Invalid password");
+      return;
     }
     if (
       email.length &&
       !/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)
     ) {
       setError("Invalid Email Address");
+      return;
+    }
+  };
+
+  const urlChecker = () => {
+    const url = window.location.href.endsWith("/user/auth")
+      ? "user/auth"
+      : "admin/auth";
+    return url;
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    validateForm();
+    const url = urlChecker();
+    let response;
+    try {
+      response = await axios.post(url, {
+        email,
+        password,
+      });
+    } catch (err) {
+      if (err.response.status === 400) {
+        setError(err.response.data.message);
+        return;
+      }
+      if (err.response.status === 404) {
+        setError(err.response.data.message);
+        return;
+      }
+    }
+    if (response.status === 200) {
+      console.log("logged in");
     }
   };
 
@@ -47,13 +83,6 @@ function Login() {
     if (e.target.id === "password") {
       setPassword(e.target.value);
     }
-  };
-
-  const urlChecker = () => {
-    const url = window.location.href.endsWith("/user/auth")
-      ? "http://localhost:8080/api/v1/user/auth"
-      : "http://localhost:8080/api/v1/admin/auth";
-    return url;
   };
 
   return (

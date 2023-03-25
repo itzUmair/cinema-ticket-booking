@@ -12,6 +12,7 @@
   --placeholder-clr: #7c7a8d;
 
   --error-clr: rgba(255, 0, 0, 0.544);
+  --success-clr: rgb(0, 179, 0);
 }
 
 *,
