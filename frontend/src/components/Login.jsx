@@ -14,6 +14,7 @@ function Login() {
   const [error, setError] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [cookies, setCookies, removeCookies] = useCookies();
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
   const validateForm = () => {
@@ -46,6 +47,7 @@ function Login() {
       setError("Invalid Email Address");
       return;
     }
+    setIsLoading(true);
   };
 
   const urlChecker = () => {
@@ -77,9 +79,9 @@ function Login() {
     }
     if (response.status === 200) {
       setCookies("accessToken", response.data.token);
-      console.log(response.data.token);
       navigate("/user/dashboard");
     }
+    setIsLoading(false);
   };
 
   const handleChange = (e) => {
@@ -132,8 +134,13 @@ function Login() {
         </span>
       )}
 
-      <button type="submit" className="submitBtn" onClick={handleSubmit}>
-        Login
+      <button
+        type="submit"
+        className="submitBtn"
+        disabled={isLoading ? true : false}
+        onClick={handleSubmit}
+      >
+        {isLoading ? "Please Wait..." : "Login"}
       </button>
     </form>
   );

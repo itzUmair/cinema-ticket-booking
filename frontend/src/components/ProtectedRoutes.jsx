@@ -6,23 +6,35 @@ import axios from "../api/axios";
 
 function ProtectedRoutes() {
   const [cookies, setCookies, removeCookies] = useCookies();
-  const [sessionExpired, setSessionExpired] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const verifyToken = async () => {
+      setIsLoading(true);
       const token = cookies?.accessToken;
       try {
         const response = await axios.post("verifyToken", {
           token,
         });
-        console.log(response);
       } catch (err) {
-        setSessionExpired(true);
-        setCookies("accessToken", "");
+        if (err.response.status === 401) {
+          removeCookies("accessToken");
+        }
       }
+      setIsLoading(false);
     };
     verifyToken();
   }, []);
+
+  if (isLoading) {
+    return (
+      <LoginPrompt
+        prompt="Verifying your account"
+        msg="Please wait..."
+        btn={false}
+      />
+    );
+  }
 
   if (cookies?.accessToken?.length) {
     return (
@@ -30,10 +42,14 @@ function ProtectedRoutes() {
         <Outlet />
       </main>
     );
-  } else if (sessionExpired) {
-    return <LoginPrompt prompt="Your session Expired!" />;
   } else {
-    return <LoginPrompt prompt="You are not logged in!" />;
+    return (
+      <LoginPrompt
+        prompt="You are not logged in!"
+        msg="Please log in to continue..."
+        btn={true}
+      />
+    );
   }
 }
 
