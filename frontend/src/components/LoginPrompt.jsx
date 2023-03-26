@@ -2,7 +2,7 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../styles/components/LoginPrompt.css";
 
-function LoginPrompt({ prompt, msg, btn }) {
+function LoginPrompt({ prompt, msg, btn, redirect }) {
   const navigate = useNavigate();
   return (
     <div className="promptContainer">
@@ -10,7 +10,11 @@ function LoginPrompt({ prompt, msg, btn }) {
       <p>{msg}</p>
       <button
         style={btn ? { display: "inline-block" } : { display: "none" }}
-        onClick={() => navigate("/user/auth")}
+        onClick={() => {
+          redirect === "user"
+            ? navigate("/user/auth")
+            : navigate("/admin/auth");
+        }}
       >
         Login
       </button>

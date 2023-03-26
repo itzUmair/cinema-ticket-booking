@@ -79,7 +79,14 @@ function Login() {
     }
     if (response.status === 200) {
       setCookies("accessToken", response.data.token);
-      navigate("/user/dashboard");
+      if (url === "user/auth") {
+        navigate("/user/dashboard");
+        return;
+      }
+      if (url === "admin/auth") {
+        navigate("/admin/dashboard");
+        return;
+      }
     }
     setIsLoading(false);
   };

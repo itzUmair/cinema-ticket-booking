@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Login, Signup, Layout } from "../components/index";
 import Logo from "../assets/logo-cropped.png";
-import "../styles/pages/userAuth.css";
+import "../styles/pages/auth.css";
 
 function UserAuth() {
   const [isLogin, setIsLogin] = useState(true);

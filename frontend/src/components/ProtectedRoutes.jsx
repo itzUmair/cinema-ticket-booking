@@ -13,9 +13,16 @@ function ProtectedRoutes() {
       setIsLoading(true);
       const token = cookies?.accessToken;
       try {
-        const response = await axios.post("verifyToken", {
-          token,
-        });
+        const response = await axios.post(
+          "verifyToken",
+          { message: "token verification" },
+          {
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
       } catch (err) {
         if (err.response.status === 401) {
           removeCookies("accessToken");
@@ -25,6 +32,14 @@ function ProtectedRoutes() {
     };
     verifyToken();
   }, []);
+  const redirect = () => {
+    if (window.location.href.endsWith("/user/dashboard")) {
+      return "user";
+    }
+    if (window.location.href.endsWith("/admin/dashboard")) {
+      return "admin";
+    }
+  };
 
   if (isLoading) {
     return (
@@ -32,6 +47,7 @@ function ProtectedRoutes() {
         prompt="Verifying your account"
         msg="Please wait..."
         btn={false}
+        redirect={null}
       />
     );
   }
@@ -48,6 +64,7 @@ function ProtectedRoutes() {
         prompt="You are not logged in!"
         msg="Please log in to continue..."
         btn={true}
+        redirect={redirect()}
       />
     );
   }

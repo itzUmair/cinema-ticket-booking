@@ -53,6 +53,14 @@
   border-bottom-right-radius: 0.35rem;
 }
 
+.adminPrompt {
+  background-color: var(--button-bg-clr);
+  width: 25rem;
+  text-align: center;
+  padding: 0.5rem;
+  border-radius: 0.35rem;
+}
+
 @media (min-width: 0px) and (max-width: 500px) {
   .formSwitcher {
     width: 18rem;
