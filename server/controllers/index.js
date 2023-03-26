@@ -56,10 +56,16 @@ const adminLogin = async (req, res) => {
     return;
   }
   const admin_id = result[0].admin_id;
+  const admin_name = result[0].username;
+  const admin_email = result[0].email;
 
-  const accessToken = jwt.sign({ admin_id }, process.env.JWT_SECRET, {
-    expiresIn: "1m",
-  });
+  const accessToken = jwt.sign(
+    { admin_id, admin_name, admin_email },
+    process.env.JWT_SECRET,
+    {
+      expiresIn: "24h",
+    }
+  );
 
   // sending the access token
   res
@@ -117,7 +123,7 @@ const userLogin = async (req, res) => {
   const customer_id = result[0].customer_id;
 
   const accessToken = jwt.sign({ customer_id }, process.env.JWT_SECRET, {
-    expiresIn: "5s",
+    expiresIn: "2h",
   });
 
   // sending the access token
@@ -177,7 +183,8 @@ const verifyToken = async (req, res) => {
   }
   try {
     const valid = jwt.verify(token, process.env.JWT_SECRET);
-    res.status(200).json({ accessToken: token });
+    const data = jwt.decode(token, process.env.JWT_SECRET);
+    res.status(200).json({ accessToken: token, user: data });
     return;
   } catch (err) {
     res.status(401).json({ message: err.name });
