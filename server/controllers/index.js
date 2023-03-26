@@ -168,7 +168,13 @@ const userSignup = async (req, res) => {
 };
 
 const verifyToken = async (req, res) => {
-  const { token } = req.body;
+  let token;
+  if (req.headers.authorization.startsWith("Bearer ")) {
+    token = req.headers.authorization.split(" ")[1];
+  } else {
+    res.status(400).json({ message: "wrong token" });
+    return;
+  }
   try {
     const valid = jwt.verify(token, process.env.JWT_SECRET);
     res.status(200).json({ accessToken: token });
