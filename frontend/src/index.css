@@ -13,6 +13,8 @@
 
   --error-clr: rgba(255, 0, 0, 0.544);
   --success-clr: rgb(0, 179, 0);
+
+  --shadow-clr: rgba(0, 0, 0, 0.2);
 }
 
 *,
@@ -23,11 +25,13 @@
   box-sizing: border-box;
   font: inherit;
   font-family: Roboto, sans-serif;
+  list-style: none;
 }
 
 html,
 body {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 ::-moz-selection {

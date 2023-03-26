@@ -1,8 +1,6 @@
 import React from "react";
-import { Login, Layout } from "../components/index";
+import { Login } from "../components/index";
 import Logo from "../assets/logo-cropped.png";
-
-import "../styles/pages/adminAuth.css";
 
 function AdminAuth() {
   return (

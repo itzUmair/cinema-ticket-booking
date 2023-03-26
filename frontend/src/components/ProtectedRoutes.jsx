@@ -7,6 +7,7 @@ import axios from "../api/axios";
 function ProtectedRoutes() {
   const [cookies, setCookies, removeCookies] = useCookies();
   const [isLoading, setIsLoading] = useState(false);
+  const [user, setUser] = useState({});
 
   useEffect(() => {
     const verifyToken = async () => {
@@ -23,10 +24,12 @@ function ProtectedRoutes() {
             },
           }
         );
+        setUser(response.data.user);
       } catch (err) {
         if (err.response.status === 401) {
           removeCookies("accessToken");
         }
+        setUser({});
       }
       setIsLoading(false);
     };
@@ -55,7 +58,7 @@ function ProtectedRoutes() {
   if (cookies?.accessToken?.length) {
     return (
       <main>
-        <Outlet />
+        <Outlet context={[user, setUser]} />
       </main>
     );
   } else {

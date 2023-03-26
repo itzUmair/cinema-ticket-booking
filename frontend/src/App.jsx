@@ -1,4 +1,4 @@
-import { Login, Signup, ProtectedRoutes, Layout } from "./components/index";
+import { Login, Signup, ProtectedRoutes, AuthLayout } from "./components/index";
 import { UserAuth, AdminAuth, Dashboard, AdminDashboard } from "./pages/index";
 import { Routes, Route } from "react-router-dom";
 import "./App.css";
@@ -7,7 +7,7 @@ function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path="/" element={<Layout />}>
+        <Route path="/" element={<AuthLayout />}>
           <Route path="/user/auth" element={<UserAuth />} />
           <Route path="/admin/auth" element={<AdminAuth />} />
         </Route>

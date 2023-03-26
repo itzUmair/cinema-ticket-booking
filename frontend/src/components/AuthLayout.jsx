@@ -2,7 +2,7 @@ import React from "react";
 import { Header, Footer } from "./index";
 import { Outlet } from "react-router-dom";
 
-function Layout() {
+function AuthLayout() {
   return (
     <main>
       {/* <Header /> */}
@@ -12,4 +12,4 @@ function Layout() {
   );
 }
 
-export default Layout;
+export default AuthLayout;

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Login, Signup, Layout } from "../components/index";
+import { Login, Signup } from "../components/index";
 import Logo from "../assets/logo-cropped.png";
 import "../styles/pages/auth.css";
 

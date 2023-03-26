@@ -1,0 +1,56 @@
+.titlebar {
+  display: flex;
+  align-items: center;
+  background-color: var(--button-bg-clr);
+  width: 100vw;
+  padding: 1rem;
+  height: 4rem;
+
+  color: var(--primary-txt-clr);
+
+  box-shadow: 0 0.25rem 1rem 0.1rem var(--shadow-clr);
+}
+
+.titlebar .logo {
+  width: 7rem;
+  margin: 0;
+}
+
+.titlebar .title {
+  font-weight: 600;
+  font-size: 1.25rem;
+  margin-left: auto;
+}
+
+.titlebar .profile {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  position: relative;
+  cursor: pointer;
+}
+
+.titlebar .profile img {
+  width: 1.2rem;
+  transition: transform 500ms ease;
+}
+
+.titlebar .profile.active img {
+  transform: rotateX(180deg);
+}
+
+.titlebar .profile .avatar {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  cursor: pointer;
+  margin-left: 0.5rem;
+
+  background-color: var(--primary-accent-clr);
+}

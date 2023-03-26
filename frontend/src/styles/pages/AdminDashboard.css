@@ -1,0 +1,4 @@
+.dashboardContainer {
+  background-color: var(--primary-bg-clr);
+  min-height: 100vh;
+}
