@@ -25,10 +25,6 @@
   border-radius: 0.5rem;
 }
 
-/* .profileOptionDialog .profileOptionsContainer .profileOptions {
-  padding-inline: ;
-} */
-
 .profileOptionDialog .profileOptionsContainer .profileOptions .profileEmailTag {
   font-size: 0.8rem;
 }
@@ -41,7 +37,7 @@
   border-bottom: 0.1rem solid var(--primary-bg-clr);
 }
 
-.profileOptionDialog .profileOptionsContainer .profileOptions button {
+.dashboardNavBtn {
   background-color: transparent;
   color: var(--primary-txt-clr);
   border: none;
@@ -49,7 +45,7 @@
   position: relative;
 }
 
-.profileOptionDialog .profileOptionsContainer .profileOptions button::after {
+.dashboardNavBtn::after {
   content: "";
   position: absolute;
   bottom: -0.25rem;
@@ -62,10 +58,7 @@
   transition: transform 500ms ease;
 }
 
-.profileOptionDialog
-  .profileOptionsContainer
-  .profileOptions
-  button:hover::after {
+.dashboardNavBtn:hover::after {
   transform: scaleX(100%);
   transform-origin: left;
 }

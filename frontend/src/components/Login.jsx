@@ -76,6 +76,7 @@ function Login() {
         setError(err.response.data.message);
         return;
       }
+      setIsLoading(false);
     }
     if (response.status === 200) {
       setCookies("accessToken", response.data.token);

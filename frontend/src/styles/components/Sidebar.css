@@ -1,0 +1,21 @@
+.sidebar {
+  display: flex;
+  padding: 1rem 1.5rem;
+  width: 10rem;
+  background-color: var(--button-bg-clr);
+}
+
+.sidebar .menuContainer .menuOptions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.sidebar .menuContainer .menuOptions .optionIcon {
+  width: 1.1rem;
+}
+
+.sidebar .menuContainer .menuOptions button {
+  font-size: 1rem;
+}

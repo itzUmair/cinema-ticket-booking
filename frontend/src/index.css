@@ -10,6 +10,7 @@
 
   --input-bg-clr: rgb(15, 16, 46);
   --placeholder-clr: #7c7a8d;
+  --outline-clr: #2d284b;
 
   --error-clr: rgba(255, 0, 0, 0.544);
   --success-clr: rgb(0, 179, 0);
@@ -26,6 +27,7 @@
   font: inherit;
   font-family: Roboto, sans-serif;
   list-style: none;
+  text-decoration: none;
 }
 
 html,

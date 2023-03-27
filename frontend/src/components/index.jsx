@@ -7,5 +7,8 @@ export { default as LoginPrompt } from "./LoginPrompt";
 
 export { default as TitleBar } from "./admin/TitleBar";
 export { default as ProfileOptionDialog } from "./ProfileOptionDialog";
+export { default as Sidebar } from "./admin/Sidebar";
+
+export { default as Profile } from "./admin/Profile";
 
 export { default as ProtectedRoutes } from "./ProtectedRoutes";

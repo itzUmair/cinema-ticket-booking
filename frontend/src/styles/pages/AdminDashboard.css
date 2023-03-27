@@ -1,4 +1,9 @@
 .dashboardContainer {
   background-color: var(--primary-bg-clr);
-  min-height: 100vh;
+  height: 100vh;
+}
+
+.dashboardContainer .mainBody {
+  display: flex;
+  /* height: 100%; */
 }

@@ -14,10 +14,17 @@ function ProfileOptionDialog({ visibility, email, setViewProfile, logout }) {
           <p className="profileEmail">{email}</p>
         </li>
         <li className="profileOptions">
-          <button onClick={() => setViewProfile(true)}>View Profile</button>
+          <button
+            className="dashboardNavBtn"
+            onClick={() => setViewProfile(true)}
+          >
+            View Profile
+          </button>
         </li>
         <li className="profileOptions">
-          <button onClick={() => logout()}>Log Out</button>
+          <button className="dashboardNavBtn" onClick={() => logout()}>
+            Log Out
+          </button>
         </li>
       </ul>
     </div>
