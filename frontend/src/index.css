@@ -1,10 +1,12 @@
 :root {
-  --primary-bg-clr: #13153b;
+  /* --primary-bg-clr: #13153b; */
+  --primary-bg-clr: rgb(211, 211, 211);
   --primary-txt-clr: #fafafb;
   --primary-accent-clr: #f03b7a;
 
   --primary-accent-hover-clr: #bb2f60;
 
+  --title-bg-clr: #13153b;
   --button-bg-clr: #363c5d;
   --button-hover-clr: #2e334f;
 

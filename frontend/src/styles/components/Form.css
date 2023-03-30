@@ -7,14 +7,16 @@
   width: 25rem;
 }
 
-.formGroup {
+.loginForm > .formGroup,
+.signupForm > .formGroup {
   display: flex;
   align-items: flex-start;
   flex-direction: column;
   gap: 0.35rem;
 }
 
-.formGroup > input {
+.loginForm > .formGroup > input,
+.signupForm > .formGroup > input {
   background-color: rgb(15, 16, 46);
   border: none;
   padding: 0.5rem;
@@ -24,36 +26,43 @@
   border-radius: 0.25rem;
 }
 
-.formGroup.password {
+.loginForm > .formGroup.password,
+.signupForm > .formGroup.password {
   position: relative;
 }
 
-.formGroup > .showPassword {
+.loginForm > .formGroup > .showPassword,
+.signupForm > .formGroup > .showPassword {
   position: absolute;
   bottom: 0.15rem;
   right: 0.3rem;
   cursor: pointer;
 }
 
-.formGroup > .showPassword > img {
+.loginForm > .formGroup > .showPassword > img,
+.signupForm > .formGroup > .showPassword > img {
   width: 1.25rem;
   user-select: none;
 }
 
-.formGroup > input:focus {
+.loginForm > .formGroup > input:focus,
+.signupForm > .formGroup > input:focus {
   outline: 0.1rem solid var(--primary-accent-clr);
 }
 
-.formGroup > label {
+.loginForm > .formGroup > label,
+.signupForm > .formGroup > label {
   font-size: 1rem;
 }
 
-.formGroup > input::placeholder {
+.loginForm > .formGroup > input::placeholder,
+.signupForm > .formGroup > input::placeholder {
   font-size: 0.8rem;
   color: var(--placeholder-clr);
 }
 
-.formGroup > label {
+.loginForm > .formGroup > label,
+.signupForm > .formGroup > label {
   user-select: none;
 }
 

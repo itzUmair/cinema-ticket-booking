@@ -1,15 +1,17 @@
 .titlebar {
   display: flex;
   align-items: center;
-  background-color: var(--button-bg-clr);
+  background-color: var(--title-bg-clr);
   width: 100vw;
   padding: 1rem;
   height: 4rem;
 
+  position: relative;
+  z-index: 9999;
+
   color: var(--primary-txt-clr);
 
-  /* box-shadow: 0 0.25rem 1rem 0.1rem var(--shadow-clr); */
-  border-bottom: 0.15rem solid var(--primary-bg-clr);
+  border-bottom: 0.01rem solid var(--primary-bg-clr);
 }
 
 .titlebar .logo {

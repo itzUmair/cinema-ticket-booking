@@ -1,7 +1,13 @@
 import React from "react";
 import "../styles/components/ProfileOptionDialog.css";
 
-function ProfileOptionDialog({ visibility, email, setViewProfile, logout }) {
+function ProfileOptionDialog({
+  visibility,
+  email,
+  setViewProfile,
+  logout,
+  pageCleanup,
+}) {
   return (
     <div
       className={
@@ -16,7 +22,10 @@ function ProfileOptionDialog({ visibility, email, setViewProfile, logout }) {
         <li className="profileOptions">
           <button
             className="dashboardNavBtn"
-            onClick={() => setViewProfile(true)}
+            onClick={() => {
+              pageCleanup();
+              setViewProfile(true);
+            }}
           >
             View Profile
           </button>

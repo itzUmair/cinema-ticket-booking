@@ -7,7 +7,7 @@ import ProfileOptionDialog from "../ProfileOptionDialog";
 import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
 
-function TitleBar({ name, email, setProfilePage }) {
+function TitleBar({ name, email, setProfilePage, pageCleanup }) {
   const [cookies, setCookies, removeCookies] = useCookies();
   const [profileOptions, setProfileOptions] = useState(false);
   const [viewProfile, setViewProfile] = useState(false);
@@ -41,6 +41,7 @@ function TitleBar({ name, email, setProfilePage }) {
         email={email}
         setViewProfile={setProfilePage}
         logout={logout}
+        pageCleanup={pageCleanup}
       />
     </div>
   );

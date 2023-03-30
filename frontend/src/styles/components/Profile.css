@@ -1,0 +1,17 @@
+.profileForm {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  /* width: 22rem; */
+}
+
+.profileForm > span {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.userid {
+  width: 60%;
+  text-align: center;
+}

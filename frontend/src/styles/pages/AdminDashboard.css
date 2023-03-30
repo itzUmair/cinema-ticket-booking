@@ -5,5 +5,6 @@
 
 .dashboardContainer .mainBody {
   display: flex;
-  /* height: 100%; */
+  padding-block-start: 1rem;
+  padding-inline-start: 11rem;
 }

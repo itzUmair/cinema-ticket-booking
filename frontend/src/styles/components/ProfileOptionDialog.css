@@ -16,7 +16,7 @@
 }
 
 .profileOptionDialog .profileOptionsContainer {
-  background-color: var(--button-bg-clr);
+  background-color: var(--title-bg-clr);
   padding-block: 1rem;
   padding-inline: 1.5rem;
   display: flex;
@@ -51,14 +51,34 @@
   bottom: -0.25rem;
   left: 0;
   width: 100%;
-  height: 0.1rem;
+  height: 0.01rem;
   background-color: var(--primary-txt-clr);
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 500ms ease;
 }
 
+.dashboardNavBtn.active {
+  color: var(--title-bg-clr);
+  position: relative;
+  z-index: 99;
+}
+
+.dashboardNavBtn.active::before {
+  content: "";
+  position: absolute;
+  top: -0.25rem;
+  left: -1rem;
+  width: 9.5rem;
+  height: 150%;
+  background-color: var(--primary-bg-clr);
+  z-index: -1;
+  border-top-left-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
+}
+
 .dashboardNavBtn:hover::after {
   transform: scaleX(100%);
+  height: 0.01rem;
   transform-origin: left;
 }
