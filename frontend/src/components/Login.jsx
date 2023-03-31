@@ -18,6 +18,11 @@ function Login() {
   const navigate = useNavigate();
 
   const validateForm = () => {
+    if (!email.length || !password.length) {
+      setError("Fields cannot be empty");
+      return;
+    }
+
     if (!email.length) {
       setError("Email cannot be empty");
       return;

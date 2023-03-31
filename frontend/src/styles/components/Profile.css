@@ -2,16 +2,34 @@
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  /* width: 22rem; */
+  width: 30rem;
 }
 
 .profileForm > span {
   display: flex;
   justify-content: space-between;
   gap: 1rem;
+  position: relative;
 }
 
-.userid {
-  width: 60%;
-  text-align: center;
+.profileForm > span > input {
+  width: 50%;
+}
+
+.userid,
+.profileForm > span > #email {
+  width: 50%;
+  text-align: left;
+}
+
+.showPassBtn {
+  position: absolute;
+  right: 0.2rem;
+  filter: invert(0%) sepia(96%) saturate(7500%) hue-rotate(30deg) brightness(0%)
+    contrast(102%);
+  cursor: pointer;
+}
+
+.showPassBtn > img {
+  width: 1.2rem;
 }

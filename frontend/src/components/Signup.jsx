@@ -18,6 +18,15 @@ function Signup() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (
+      !email.length ||
+      !name.length ||
+      !password.length ||
+      !confirmPassword.length
+    ) {
+      setError("Fields cannot be empty");
+      return;
+    }
+    if (
       !/^(?=[a-zA-Z ]{3,20}$)(?!.*[_.]{2})[^_.].*[^_.]$/.test(name) ||
       name.endsWith(" ") ||
       name.startsWith(" ")
