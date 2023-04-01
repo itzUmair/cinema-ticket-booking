@@ -117,8 +117,6 @@ function Profile({ userInfo }) {
           },
         }
       );
-      console.log(cookies);
-      console.log(response);
     } catch (err) {
       if (err.response.status === 401) {
         removeCookies("accessToken");

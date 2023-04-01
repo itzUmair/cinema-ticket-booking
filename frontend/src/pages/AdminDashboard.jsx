@@ -12,7 +12,6 @@ function AdminDashboard() {
     setProfilePage(false);
     setMoviesPage(false);
   };
-  console.log(user);
 
   return (
     <main className="dashboardContainer">

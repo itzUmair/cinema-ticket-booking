@@ -63,7 +63,7 @@ const adminLogin = async (req, res) => {
     { admin_id, admin_name, admin_email },
     process.env.JWT_SECRET,
     {
-      expiresIn: "30s",
+      expiresIn: "24h",
     }
   );
 
