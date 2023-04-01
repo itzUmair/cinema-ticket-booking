@@ -5,25 +5,32 @@
   width: 30rem;
 }
 
-.profileForm > span {
+.profileForm > .formGroup {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   gap: 1rem;
   position: relative;
 }
 
-.profileForm > span > input {
+.profileForm > .formGroup > input {
   width: 50%;
+  border: none;
+  padding: 0.5rem;
+  font-size: 0.9rem;
+  border-radius: 0.25rem;
 }
 
 .userid,
-.profileForm > span > #email {
+.profileForm > .formGroup > #email {
   width: 50%;
   text-align: left;
 }
 
 .showPassBtn {
   position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
   right: 0.2rem;
   filter: invert(0%) sepia(96%) saturate(7500%) hue-rotate(30deg) brightness(0%)
     contrast(102%);
@@ -38,4 +45,31 @@
   color: gray;
   font-style: italic;
   font-size: 0.8rem;
+}
+
+.changePassBtn,
+.saveChangesBtn {
+  cursor: pointer;
+  border: none;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+}
+
+.changePassBtn:hover,
+.changePassBtn:focus,
+.saveChangesBtn:hover,
+.saveChangesBtn:focus {
+  outline: 0.1rem solid var(--primary-accent-clr);
+}
+
+.profileForm > .formGroup > input:focus {
+  outline: 0.1rem solid var(--primary-accent-clr);
+}
+
+.profileForm > .formGroup > label {
+  font-size: 1rem;
+}
+
+.profileForm > .formGroup > label {
+  user-select: none;
 }

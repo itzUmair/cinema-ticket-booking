@@ -25,27 +25,6 @@ function Profile({ userInfo }) {
 
   const navigate = useNavigate();
 
-  const verifyToken = async () => {
-    const token = cookies?.accessToken;
-    try {
-      const response = await axios.post(
-        "verifyToken",
-        { message: "token verification" },
-        {
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
-    } catch (err) {
-      if (err.response.status === 401) {
-        removeCookies("accessToken");
-        return;
-      }
-    }
-  };
-
   const handleUpdateProfile = async (e) => {
     e.preventDefault();
     if (
@@ -126,7 +105,26 @@ function Profile({ userInfo }) {
       setError("Passwords do not match");
       return;
     }
-    verifyToken();
+    const token = cookies?.accessToken;
+    try {
+      const response = await axios.post(
+        "verifyToken",
+        { message: "token verification" },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      console.log(cookies);
+      console.log(response);
+    } catch (err) {
+      if (err.response.status === 401) {
+        removeCookies("accessToken");
+        return;
+      }
+    }
 
     if (error.length === 0) {
       if (currentPassword === undefined && username === userInfo?.admin_name) {
@@ -199,9 +197,10 @@ function Profile({ userInfo }) {
           <label htmlFor="email">Email: </label>
           <p id="email">{email}</p>
         </span>
-        <span>
+        <span className="formGroup">
           <label htmlFor="password">Password: </label>
           <button
+            className="changePassBtn"
             onClick={(e) => {
               e.preventDefault();
               setChangePassword(!changePassword);
@@ -250,9 +249,7 @@ function Profile({ userInfo }) {
               </span>
             </span>
             <span className="formGroup">
-              <label htmlFor="confirmNnewPassword">
-                Confirm New Password:{" "}
-              </label>
+              <label htmlFor="confirmNnewPassword">Confirm New Password:</label>
               <input
                 type={showConfirmNewPassword ? "text" : "password"}
                 name="confirmNewPassword"
@@ -281,9 +278,14 @@ function Profile({ userInfo }) {
           </span>
         )}
         <p className="warning">
-          You need to log back to make changes effective
+          You need to login again to make changes effective
         </p>
-        <button onClick={(e) => handleUpdateProfile(e)}>Save changes</button>
+        <button
+          className="saveChangesBtn"
+          onClick={(e) => handleUpdateProfile(e)}
+        >
+          Save changes
+        </button>
       </form>
     </>
   );
