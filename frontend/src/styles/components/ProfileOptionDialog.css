@@ -67,10 +67,10 @@
 .dashboardNavBtn.active::before {
   content: "";
   position: absolute;
-  top: -0.25rem;
+  top: -0.5rem;
   left: -1rem;
   width: 9.5rem;
-  height: 150%;
+  height: 200%;
   background-color: var(--primary-bg-clr);
   z-index: -1;
   border-top-left-radius: 0.5rem;

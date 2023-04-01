@@ -192,4 +192,89 @@ const verifyToken = async (req, res) => {
   }
 };
 
-module.exports = { home, adminLogin, userLogin, userSignup, verifyToken };
+const adminUpdate = async (req, res) => {
+  const { username, currentPassword, newPassword } = req.body;
+  let token;
+  if (req.headers.authorization.startsWith("Bearer ")) {
+    token = req.headers.authorization.split(" ")[1];
+  } else {
+    res.status(400).json({ message: "wrong token" });
+    return;
+  }
+  const { admin_id, admin_name, admin_email } = jwt.decode(
+    token,
+    process.env.JWT_SECRET
+  );
+  const [admin] = await db.query(
+    `
+      SELECT admin.password
+      FROM admin
+      WHERE admin.admin_id = ?
+    `,
+    [admin_id]
+  );
+  // if the password is not changed
+  if (currentPassword === "") {
+    const [result] = await db.query(
+      `
+          UPDATE admin
+          SET admin.username = ?
+          WHERE admin.admin_id = ?
+  
+        `,
+      [username, admin_id]
+    );
+  } else {
+    const validPassword = await bcrypt.compare(
+      currentPassword,
+      admin[0].password
+    );
+
+    if (!validPassword) {
+      res.status(401).json({ message: "Incorrect Password" });
+      return;
+    }
+
+    const hashedPassword = await bcrypt.hash(newPassword, 10);
+
+    const [result] = await db.query(
+      `
+          UPDATE admin
+          SET admin.password = ?, admin.username = ?
+          WHERE admin.admin_id = ?
+  
+        `,
+      [hashedPassword, username, admin_id]
+    );
+  }
+  const [updatedData] = await db.query(
+    `
+        SELECT *
+        FROM admin
+        WHERE admin.admin_id = ?
+      `,
+    [admin_id]
+  );
+
+  const accessToken = jwt.sign(
+    {
+      admin_id: updatedData[0].admin_id,
+      admin_name: updatedData[0].username,
+      admin_email: updatedData[0].email,
+    },
+    process.env.JWT_SECRET,
+    {
+      expiresIn: "24h",
+    }
+  );
+  res.status(200).json({ success: true, accessToken });
+};
+
+module.exports = {
+  home,
+  adminLogin,
+  userLogin,
+  userSignup,
+  verifyToken,
+  adminUpdate,
+};

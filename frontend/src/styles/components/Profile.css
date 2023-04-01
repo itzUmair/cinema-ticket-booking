@@ -33,3 +33,9 @@
 .showPassBtn > img {
   width: 1.2rem;
 }
+
+.warning {
+  color: gray;
+  font-style: italic;
+  font-size: 0.8rem;
+}

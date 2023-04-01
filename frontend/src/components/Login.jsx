@@ -75,13 +75,14 @@ function Login() {
     } catch (err) {
       if (err.response.status === 400) {
         setError(err.response.data.message);
+        isLoading(false);
         return;
       }
       if (err.response.status === 404) {
         setError(err.response.data.message);
+        setIsLoading(false);
         return;
       }
-      setIsLoading(false);
     }
     if (response.status === 200) {
       setCookies("accessToken", response.data.token);
