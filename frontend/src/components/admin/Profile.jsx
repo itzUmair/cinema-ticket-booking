@@ -176,6 +176,7 @@ function Profile({ userInfo }) {
 
   return (
     <>
+      <h1 className="pageHeader">Profile</h1>
       <form className="profileForm">
         <span className="formGroup">
           <p>ID:</p>

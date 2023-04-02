@@ -12,5 +12,7 @@ export { default as Sidebar } from "./admin/Sidebar";
 export { default as Profile } from "./admin/Profile";
 export { default as Movies } from "./admin/Movies";
 export { default as Navbtn } from "./admin/Navbtn";
+export { default as Admins } from "./admin/Admins";
+export { default as AddNewAdminDialog } from "./admin/AddNewAdminDialog";
 
 export { default as ProtectedRoutes } from "./ProtectedRoutes";

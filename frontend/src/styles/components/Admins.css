@@ -1,0 +1,58 @@
+.dataContainer {
+  width: 50rem;
+}
+
+.addNewAdminBtn {
+  margin-block: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: var(--primary-accent-clr);
+  border: none;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+}
+
+.addNewAdminBtn:hover {
+  background-color: var(--primary-accent-clr-dark);
+}
+
+.addNewAdminBtn > img {
+  width: 0.8rem;
+}
+
+.dataContainer > thead > tr > th {
+  text-align: center;
+  /* width: 20%; */
+  height: 2rem;
+  font-weight: 700;
+  background-color: var(--primary-accent-clr);
+}
+
+.dataContainer > tbody > tr > td {
+  height: 2rem;
+}
+
+.dataContainer,
+th,
+td {
+  border: 0.05rem solid black;
+  border-collapse: collapse;
+}
+
+.dataContainer > tbody > tr > td {
+  text-align: center;
+}
+
+.dataContainer > tbody > tr > .actions > button {
+  cursor: pointer;
+  border: none;
+  border-radius: 0.25rem;
+  padding: 0.25rem 0.5rem;
+  background-color: var(--error-clr);
+}
+
+.dataContainer > tbody > tr > .actions > button:hover {
+  background-color: var(--error-clr-dark);
+}

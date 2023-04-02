@@ -270,6 +270,50 @@ const adminUpdate = async (req, res) => {
   res.status(200).json({ success: true, accessToken });
 };
 
+const getAllAdmins = async (req, res) => {
+  const [result] = await db.query(
+    `
+      SELECT admin.admin_id, admin.username, admin.email
+      FROM admin;
+    `
+  );
+  res.status(200).json(result);
+};
+
+const addNewAdmin = async (req, res) => {
+  const { username, password, email } = req.body;
+  const [data] = await db.query(
+    `
+      SELECT admin.admin_id
+      FROM admin
+      WHERE admin.email = ?;
+    `,
+    [email]
+  );
+  if (data.length > 0) {
+    res.status(406).json({ message: "admin with this email already exists" });
+    return;
+  }
+  const hashedPassword = await bcrypt.hash(password, 10);
+  try {
+    const admin_id = Math.floor(Math.random() * 100000);
+    const [result] = await db.query(
+      `
+        INSERT INTO admin
+        VALUES(?, ?, ?, ?);
+      `,
+      [admin_id, username, hashedPassword, email]
+    );
+    res.status(201).json({ success: true, message: "new admin created" });
+    return;
+  } catch (err) {
+    res.status(500).json({
+      success: false,
+      message: "something went wrong! please try again.",
+    });
+  }
+};
+
 module.exports = {
   home,
   adminLogin,
@@ -277,4 +321,6 @@ module.exports = {
   userSignup,
   verifyToken,
   adminUpdate,
+  getAllAdmins,
+  addNewAdmin,
 };

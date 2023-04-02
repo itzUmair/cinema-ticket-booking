@@ -4,7 +4,13 @@
 }
 
 .dashboardContainer .mainBody {
-  display: flex;
   padding-block-start: 1rem;
   padding-inline-start: 11rem;
+}
+
+.pageHeader {
+  font-size: 2rem;
+  font-weight: 700;
+  border-bottom: 0.05rem solid black;
+  margin-bottom: 1rem;
 }
