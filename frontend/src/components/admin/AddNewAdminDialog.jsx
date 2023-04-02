@@ -90,6 +90,7 @@ function AddNewAdminDialog({ setAddAdminDialog, setRefresh }) {
     } catch (err) {
       if (err.response.status === 401) {
         removeCookies("accessToken");
+        window.location.reload();
         return;
       }
       return;

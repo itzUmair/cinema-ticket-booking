@@ -5,7 +5,7 @@ import axios from "../../api/axios";
 import "../../styles/components/DeleteAdminDialog.css";
 
 function DeleteAdminDialog({ record, setDeleteAdminDialog, setRefresh }) {
-  const [cookies] = useCookies();
+  const [cookies, removeCookies] = useCookies();
 
   const handleDelete = async () => {
     const admin_id = record[0];
@@ -24,6 +24,7 @@ function DeleteAdminDialog({ record, setDeleteAdminDialog, setRefresh }) {
     } catch (err) {
       if (err.response.status === 401) {
         removeCookies("accessToken");
+        window.location.reload();
         return;
       }
       return;
