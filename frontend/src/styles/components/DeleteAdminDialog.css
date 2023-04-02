@@ -1,0 +1,47 @@
+.deleteAdminDialogContainer {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--primary-bg-clr);
+  box-shadow: 0 0 1rem 0.5rem var(--shadow-clr);
+  padding: 1rem;
+  border-radius: 0.25rem;
+}
+
+.deleteAdminDialogContainer > h2 {
+  text-align: center;
+  font-weight: 700;
+  font-size: 1.5rem;
+  background-color: var(--error-clr);
+}
+
+.adminData > p {
+  padding-left: 1rem;
+  font-weight: 600;
+}
+
+.deleteAdminBtn {
+  padding-top: 1rem;
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+}
+
+.deleteAdminBtn > button {
+  cursor: pointer;
+  border: none;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  width: 5rem;
+  font-weight: 700;
+}
+
+.deleteAdminBtn > button:hover,
+.deleteAdminBtn > button:focus {
+  outline: 0.1rem solid var(--primary-accent-clr);
+}
+
+.deleteAdminBtn > button:nth-child(1) {
+  background-color: var(--error-clr);
+}

@@ -8,6 +8,7 @@ const {
   adminUpdate,
   getAllAdmins,
   addNewAdmin,
+  deleteAdmin,
 } = require("../controllers");
 
 const router = express.Router();
@@ -20,5 +21,6 @@ router.route("/verifyToken").post(verifyToken);
 router.route("/admin/update-profile").post(adminUpdate);
 router.route("/admin/all-admins").get(getAllAdmins);
 router.route("/admin/add-admin").post(addNewAdmin);
+router.route("/admin/delete-admin").post(deleteAdmin);
 
 module.exports = router;

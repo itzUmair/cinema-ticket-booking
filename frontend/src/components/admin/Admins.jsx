@@ -2,10 +2,12 @@ import React, { useEffect, useState } from "react";
 import axios from "../../api/axios";
 import "../../styles/components/Admins.css";
 import Plus from "../../assets/plus.png";
-import { AddNewAdminDialog } from "../../components";
+import { AddNewAdminDialog, DeleteAdminDialog } from "../../components";
 
-function Admins() {
+function Admins({ userInfo }) {
   const [addAdminDialog, setAddAdminDialog] = useState(false);
+  const [deleteAdminDialog, setDeleteAdminDialog] = useState(false);
+  const [deleteAdminRecord, setDeleteAdminRecord] = useState();
   const [records, setRecords] = useState([]);
   const [refresh, setRefresh] = useState(false);
   useEffect(() => {
@@ -15,6 +17,15 @@ function Admins() {
     };
     getAllAdmins();
   }, [refresh]);
+
+  const handleDelete = async (e) => {
+    setDeleteAdminRecord([
+      e.target.dataset.id,
+      e.target.dataset.name,
+      e.target.dataset.email,
+    ]);
+    setDeleteAdminDialog(true);
+  };
 
   return (
     <>
@@ -44,7 +55,16 @@ function Admins() {
               <td>{record.username}</td>
               <td>{record.email}</td>
               <td className="actions">
-                <button>Delete</button>
+                {userInfo.admin_id !== record.admin_id && (
+                  <button
+                    data-id={record.admin_id}
+                    data-name={record.username}
+                    data-email={record.email}
+                    onClick={(e) => handleDelete(e)}
+                  >
+                    Delete
+                  </button>
+                )}
               </td>
             </tr>
           ))}
@@ -53,6 +73,13 @@ function Admins() {
       {addAdminDialog && (
         <AddNewAdminDialog
           setAddAdminDialog={setAddAdminDialog}
+          setRefresh={setRefresh}
+        />
+      )}
+      {deleteAdminDialog && (
+        <DeleteAdminDialog
+          setDeleteAdminDialog={setDeleteAdminDialog}
+          record={deleteAdminRecord}
           setRefresh={setRefresh}
         />
       )}

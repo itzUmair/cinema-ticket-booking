@@ -35,7 +35,7 @@ function AdminDashboard() {
         />
         {profilePage && <Profile userInfo={user} />}
         {moviesPage && <Movies />}
-        {adminsPage && <Admins />}
+        {adminsPage && <Admins userInfo={user} />}
       </div>
     </main>
   );

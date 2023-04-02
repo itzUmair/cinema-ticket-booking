@@ -314,6 +314,18 @@ const addNewAdmin = async (req, res) => {
   }
 };
 
+const deleteAdmin = async (req, res) => {
+  const { admin_id } = req.body;
+  const [result] = await db.query(
+    `
+      DELETE FROM admin
+      WHERE admin.admin_id = ?;
+    `,
+    [admin_id]
+  );
+  res.status(200).json({ sucess: true, message: "admin removed successfully" });
+};
+
 module.exports = {
   home,
   adminLogin,
@@ -323,4 +335,5 @@ module.exports = {
   adminUpdate,
   getAllAdmins,
   addNewAdmin,
+  deleteAdmin,
 };
