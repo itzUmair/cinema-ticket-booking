@@ -24,14 +24,13 @@
 
 .dataContainer > thead > tr > th {
   text-align: center;
-  /* width: 20%; */
   height: 2rem;
   font-weight: 700;
   background-color: var(--primary-accent-clr);
 }
 
 .dataContainer > tbody > tr > td {
-  height: 2rem;
+  height: 2.3rem;
 }
 
 .dataContainer,
@@ -42,6 +41,10 @@ td {
 }
 
 .dataContainer > tbody > tr > td {
+  padding-inline: 0.5rem;
+}
+
+.dataContainer > tbody > tr > .actions {
   text-align: center;
 }
 

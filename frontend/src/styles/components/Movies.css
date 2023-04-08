@@ -1,0 +1,47 @@
+.moviesContainer {
+  width: 60rem;
+}
+
+.moviesContainer > thead > tr > th {
+  text-align: center;
+  height: 2rem;
+  font-weight: 700;
+  background-color: var(--primary-accent-clr);
+}
+
+.moviesContainer > tbody > tr > td {
+  padding-inline: 0.5rem;
+  height: 2.3rem;
+}
+
+.moviesContainer > tbody > tr > .actions {
+  text-align: center;
+}
+
+.moviesContainer > tbody > tr > .actions > button {
+  cursor: pointer;
+  border: none;
+  border-radius: 0.25rem;
+  padding: 0.25rem 0.5rem;
+  background-color: var(--error-clr);
+}
+
+.moviesContainer > tbody > tr > .actions > button:hover {
+  background-color: var(--error-clr-dark);
+}
+
+.moviesContainer,
+th,
+td {
+  border: 0.05rem solid black;
+  border-collapse: collapse;
+}
+
+.moviesContainer > tbody > tr > .actions > button:first-child {
+  background-color: var(--primary-txt-clr);
+  margin-inline-end: 1rem;
+}
+
+.moviesContainer > tbody > tr > .actions > button:first-child:hover {
+  outline: 0.1rem solid var(--primary-accent-clr);
+}

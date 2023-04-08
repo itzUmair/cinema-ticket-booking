@@ -1,0 +1,48 @@
+.detailsContainer {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--primary-bg-clr);
+  box-shadow: 0 0 1rem 0.5rem var(--shadow-clr);
+  padding: 1rem;
+  border-radius: 0.25rem;
+  height: 20rem;
+  width: 30rem;
+  overflow-y: auto;
+}
+
+.detailsContainer > h2 {
+  background-color: var(--primary-accent-clr);
+  text-align: center;
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+
+.detailsContainer > p {
+  font-weight: 400;
+}
+
+.detailsContainer > p > span {
+  font-weight: 600;
+}
+
+.detailsContainer > .actionBtn {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: auto;
+}
+
+.detailsContainer > .actionBtn > button {
+  cursor: pointer;
+  border: none;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  width: 5rem;
+  font-weight: 700;
+}
+
+.detailsContainer > .actionBtn > button:hover,
+.detailsContainer > .actionBtn > button:focus {
+  outline: 0.1rem solid var(--primary-accent-clr);
+}

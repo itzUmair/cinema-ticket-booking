@@ -326,6 +326,16 @@ const deleteAdmin = async (req, res) => {
   res.status(200).json({ sucess: true, message: "admin removed successfully" });
 };
 
+const getAllMovies = async (req, res) => {
+  const [result] = await db.query(
+    `
+      SELECT * FROM movies;
+    `
+  );
+  console.log(result[0].start_time);
+  res.status(200).json({ result });
+};
+
 module.exports = {
   home,
   adminLogin,
@@ -336,4 +346,5 @@ module.exports = {
   getAllAdmins,
   addNewAdmin,
   deleteAdmin,
+  getAllMovies,
 };

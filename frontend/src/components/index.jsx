@@ -15,5 +15,6 @@ export { default as Navbtn } from "./admin/Navbtn";
 export { default as Admins } from "./admin/Admins";
 export { default as AddNewAdminDialog } from "./admin/AddNewAdminDialog";
 export { default as DeleteAdminDialog } from "./admin/DeleteAdminDialog";
+export { default as DisplayDetail } from "./admin/DisplayDetail";
 
 export { default as ProtectedRoutes } from "./ProtectedRoutes";

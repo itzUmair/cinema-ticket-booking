@@ -9,6 +9,7 @@ const {
   getAllAdmins,
   addNewAdmin,
   deleteAdmin,
+  getAllMovies,
 } = require("../controllers");
 
 const router = express.Router();
@@ -22,5 +23,6 @@ router.route("/admin/update-profile").post(adminUpdate);
 router.route("/admin/all-admins").get(getAllAdmins);
 router.route("/admin/add-admin").post(addNewAdmin);
 router.route("/admin/delete-admin").post(deleteAdmin);
+router.route("/admin/all-movies").get(getAllMovies);
 
 module.exports = router;
