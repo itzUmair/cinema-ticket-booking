@@ -1,4 +1,4 @@
-.addNewAdminForm {
+.addNewMovieForm {
   display: flex;
   flex-direction: column;
   width: 30rem;
@@ -13,13 +13,13 @@
   border-radius: 0.25rem;
 }
 
-.addNewAdminForm > .formGroup {
+.addNewMovieForm > .formGroup {
   display: flex;
   justify-content: space-between;
   position: relative;
 }
 
-.addNewAdminForm > .formGroup > input {
+.addNewMovieForm > .formGroup > input {
   width: 50%;
   border: none;
   padding: 0.5rem;
@@ -27,18 +27,18 @@
   border-radius: 0.25rem;
 }
 
-.addNewAdminForm > .formGroup > input:hover,
-.addNewAdminForm > .formGroup > input:focus {
+.addNewMovieForm > .formGroup > input:hover,
+.addNewMovieForm > .formGroup > input:focus {
   outline: 0.1rem solid var(--primary-accent-clr);
 }
 
-.addNewAdminForm > .formBtns {
+.addNewMovieForm > .formBtns {
   display: flex;
   justify-content: flex-end;
   gap: 1rem;
 }
 
-.addNewAdminForm > .formBtns > button {
+.addNewMovieForm > .formBtns > button {
   cursor: pointer;
   border: none;
   padding: 0.25rem 0.5rem;
@@ -46,11 +46,12 @@
   width: 5rem;
 }
 
-.addNewAdminForm > .formBtns > button:last-child {
-  background-color: red;
+.addNewMovieForm > .formBtns > button:last-child {
+  background-color: var(--success-clr);
+  color: var(--primary-txt-clr);
 }
 
-.addNewAdminForm > .formBtns > button:hover,
-.addNewAdminForm > .formBtns > button:focus {
+.addNewMovieForm > .formBtns > button:hover,
+.addNewMovieForm > .formBtns > button:focus {
   outline: 0.1rem solid var(--primary-accent-clr);
 }

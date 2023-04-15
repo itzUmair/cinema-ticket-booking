@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from "react";
 import axios from "../../api/axios";
 import "../../styles/components/Movies.css";
-import DisplayDetail from "./DisplayDetail";
+import { DisplayDetail, AddNewMovieDialog } from "../index";
+import Plus from "../../assets/plus.png";
 
 function Movies() {
   const [records, setRecords] = useState([]);
   const [refresh, setRefresh] = useState(false);
   const [displayDetailsDialog, setDisplayDetailsDialog] = useState(false);
   const [displayDetailsDialogData, setDisplayDetailsDialogData] = useState({});
+  const [addNewMovieDialog, setAddNewMovieDialog] = useState(false);
   const dateConverter = (date) => {
     const newDate = new Date(date);
     const options = {
@@ -23,14 +25,11 @@ function Movies() {
   };
 
   const handleDelete = () => {};
-  const handleAddMovie = async () => {
-    // add movies form
-  };
+
   const displayDetails = (details) => {
     setDisplayDetailsDialog(true);
     setDisplayDetailsDialogData(details);
   };
-  console.log(records);
 
   useEffect(() => {
     const getAllMovies = async () => {
@@ -42,7 +41,13 @@ function Movies() {
   return (
     <>
       <h1 className="pageHeader">Movies</h1>
-      <button onClick={() => handleAddMovie}>New Movie</button>
+      <button
+        className="addNewMovieBtn"
+        onClick={() => setAddNewMovieDialog(true)}
+      >
+        <img src={Plus} alt="" />
+        New Movie
+      </button>
       <table className="moviesContainer">
         <thead>
           <tr>
@@ -74,6 +79,12 @@ function Movies() {
         <DisplayDetail
           setDisplayDetailsDialog={setDisplayDetailsDialog}
           data={displayDetailsDialogData}
+        />
+      )}
+      {addNewMovieDialog && (
+        <AddNewMovieDialog
+          setAddNewMovieDialog={setAddNewMovieDialog}
+          setRefresh={setRefresh}
         />
       )}
     </>
